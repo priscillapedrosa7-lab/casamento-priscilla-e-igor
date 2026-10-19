@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casamento de Priscilla & Igor</title>
+  <title>Casamento Priscilla & Igor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     :root {
-      --primary: #B8860B;
-      --primary-light: #fdfaf3;
-      --accent: #d4af37;
-      --text: #333333;
+      --bg-cream: #FBF8F3;
+      --card-bg: #FFFFFF;
+      --circle-bg: #F2EBDC;
+      --btn-bg: #EAE3D2;
+      --btn-hover: #DFD6C3;
+      --text-dark: #2C2C2C;
       --text-muted: #666666;
-      --bg: #FAFAFA;
-      --white: #FFFFFF;
-      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --text-subtle: #888888;
+      --border-color: #E6DFD3;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Montserrat', sans-serif;
     }
@@ -30,196 +31,204 @@
 
     body {
       font-family: var(--font-sans);
-      color: var(--text);
-      background-color: var(--bg);
+      color: var(--text-dark);
+      background-color: var(--bg-cream);
       line-height: 1.6;
     }
 
-    h1, h2, h3, h4 {
+    /* Header & Convite */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .header-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    header h1 {
       font-family: var(--font-serif);
-      font-weight: 600;
+      font-size: 3.2rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: var(--text-dark);
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* Header & Hero */
-    header {
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
-      color: white;
+    .intro-text {
       text-align: center;
-      padding: 100px 20px;
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-
-    header p.subtitle {
-      font-size: 1.2rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    /* Message Section */
-    .intro-section {
-      text-align: center;
-      padding: 60px 20px;
-      background-color: var(--white);
-    }
-
-    .intro-card {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 40px;
-      border: 1px solid #EAEAEA;
-      border-radius: 12px;
-      box-shadow: var(--card-shadow);
-      background-color: var(--white);
-    }
-
-    .intro-card p {
-      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 50px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      font-size: 1.05rem;
     }
 
-    .heart-icon {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin: 15px 0;
-    }
-
-    /* Info Section (Data, Local, RSVP) */
+    /* Info Grid */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin: 50px 0;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 70px;
     }
 
     .info-card {
-      background: var(--primary-light);
-      padding: 30px;
-      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 25px;
       text-align: center;
-      border: 1px solid rgba(184, 134, 11, 0.2);
+      border-radius: 4px;
     }
 
     .info-card h3 {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-bottom: 10px;
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .info-card p {
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .badge-rsvp {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 8px 16px;
-      background-color: var(--primary);
-      color: white;
-      font-size: 0.9rem;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    /* Gifts Section */
-    .gifts-section {
-      padding: 60px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .section-subtitle {
-      text-align: center;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 40px;
-      font-size: 1rem;
     }
 
+    /* Seção Mimo */
+    .mimo-section {
+      text-align: center;
+      padding: 40px 0 80px;
+    }
+
+    .mimo-tag {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .mimo-title {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .mimo-description {
+      max-width: 680px;
+      margin: 0 auto 50px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Grid de Presentes */
     .gifts-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 25px;
     }
 
+    @media (max-width: 650px) {
+      .gifts-grid {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      .mimo-title {
+        font-size: 2.3rem;
+      }
+    }
+
     .gift-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 40px 25px 30px;
+      border-radius: 2px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
+      align-items: center;
+      text-align: center;
     }
 
-    .gift-card:hover {
-      transform: translateY(-5px);
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      background-color: var(--circle-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
     }
 
-    .gift-icon {
-      font-size: 3rem;
-      margin-bottom: 15px;
+    .icon-circle svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 1.5;
     }
 
-    .gift-title {
-      font-size: 1.2rem;
+    .gift-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
       margin-bottom: 10px;
-      color: var(--text);
+      color: var(--text-dark);
+    }
+
+    .gift-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      min-height: 48px;
     }
 
     .gift-price {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 1.1rem;
-      margin-bottom: 15px;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
     }
 
-    .btn {
-      background-color: var(--primary);
-      color: white;
+    .btn-mimo {
+      background-color: var(--btn-bg);
+      color: var(--text-dark);
       border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
+      padding: 12px 28px;
       font-family: var(--font-sans);
-      font-weight: 500;
-      transition: background 0.3s ease;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
       width: 100%;
+      max-width: 200px;
     }
 
-    .btn:hover {
-      background-color: #966d09;
+    .btn-mimo:hover {
+      background-color: var(--btn-hover);
     }
 
-    /* Modal */
+    /* Modal PIX */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       display: none;
       justify-content: center;
       align-items: center;
@@ -227,57 +236,47 @@
       padding: 20px;
     }
 
-    .modal-content {
+    .modal-card {
       background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 450px;
+      padding: 35px 25px;
+      max-width: 420px;
       width: 100%;
       text-align: center;
       position: relative;
+      border-radius: 4px;
     }
 
-    .close-modal {
+    .close-btn {
       position: absolute;
       top: 15px;
       right: 20px;
       font-size: 1.5rem;
       cursor: pointer;
-      color: var(--text-muted);
+      color: var(--text-subtle);
     }
 
-    .pix-box {
-      background: var(--primary-light);
-      padding: 15px;
-      border-radius: 8px;
+    .pix-key-box {
+      background: var(--bg-cream);
+      border: 1px dashed var(--border-color);
+      padding: 12px;
       margin: 20px 0;
-      word-break: break-all;
-      border: 1px dashed var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    .qrcode-container {
+    .qrcode-box {
       display: flex;
       justify-content: center;
-      margin: 15px 0;
+      margin: 20px 0;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 40px 20px;
-      background: var(--white);
-      color: var(--text-muted);
-      border-top: 1px solid #EAEAEA;
-      margin-top: 60px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-      .intro-card {
-        padding: 20px;
-      }
+      padding: 40px;
+      color: var(--text-subtle);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
     }
   </style>
 </head>
@@ -285,157 +284,163 @@
 
   <!-- Header -->
   <header>
+    <p class="header-subtitle">Celebração do Casamento Civil</p>
     <h1>Priscilla & Igor</h1>
-    <p class="subtitle">Nosso Casamento Civil</p>
   </header>
 
-  <!-- Mensagem dos Noivos -->
-  <section class="intro-section">
-    <div class="container">
-      <div class="intro-card">
-        <p>Com muita alegria, queremos convidar você para compartilhar conosco um dos momentos mais especiais das nossas vidas: a celebração do nosso casamento civil. 🤍</p>
-        <p>Escolhemos comemorar esse dia de maneira simples, íntima e cheia de amor, ao lado de pessoas que fazem parte da nossa história. Ter você conosco tornará esse momento ainda mais especial!</p>
-        <div class="heart-icon">✨</div>
-        <p>Com amor e carinho,<br><strong>Priscilla & Igor</strong></p>
-      </div>
+  <div class="container">
+    <p class="intro-text">
+      Com muita alegria, queremos convidar você para compartilhar conosco um dos momentos mais especiais das nossas vidas. Escolhemos comemorar esse dia de maneira simples, íntima e cheia de amor ao lado de quem faz parte da nossa história! 🤍
+    </p>
 
-      <!-- Informações do Evento -->
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>📍 Local</h3>
-          <p><strong>Restaurante Manati</strong></p>
-          <p>QS 01, Rua 210, Lote 08<br>Águas Claras</p>
-        </div>
-        <div class="info-card">
-          <h3>📅 Data & Horário</h3>
-          <p><strong>10 de Dezembro de 2026</strong></p>
-          <p>Horário: 19h</p>
-        </div>
-        <div class="info-card">
-          <h3>✉️ Confirmação</h3>
-          <p>Convite individual.</p>
-          <p>Por favor, confirme sua presença até:</p>
-          <span class="badge-rsvp">26/10/2026</span>
-        </div>
+    <!-- Detalhes do Evento -->
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>📍 Local</h3>
+        <p><strong>Restaurante Manati</strong></p>
+        <p>QS 01, Rua 210, Lote 08 — Águas Claras</p>
+      </div>
+      <div class="info-card">
+        <h3>📅 Data e Horário</h3>
+        <p><strong>10 de dezembro de 2026</strong></p>
+        <p>Às 19h</p>
+      </div>
+      <div class="info-card">
+        <h3>✉️ Confirmação</h3>
+        <p>Convite individual.</p>
+        <p>Por gentileza, confirme até <strong>26/10/2026</strong>.</p>
       </div>
     </div>
-  </section>
 
-  <!-- Lista de Presentes Fictícios -->
-  <section class="gifts-section">
-    <div class="container">
-      <h2 class="section-title">Lista de Presentes</h2>
-      <p class="section-subtitle">Se você desejar nos presentear, preparamos uma forma carinhosa e bem-humorada de contribuir com a nossa nova etapa a dois!</p>
+    <!-- Seção de Presentes Fictícios -->
+    <section class="mimo-section">
+      <span class="mimo-tag">COM CARINHO</span>
+      <h2 class="mimo-title">Um mimo para os noivos</h2>
+      <p class="mimo-description">
+        Sua presença já é um presente enorme. Mas, se desejar nos presentear, criamos algumas ideias simbólicas para contribuir com os sonhos e o novo lar que estamos construindo juntos. Escolha a opção que fizer sentido para você — todo gesto será recebido com gratidão.
+      </p>
 
       <div class="gifts-grid">
-        
+
+        <!-- 1. Nosso cantinho -->
         <div class="gift-card">
-          <div class="gift-icon">☕</div>
-          <h4 class="gift-title">Café da Manhã dos Noivos</h4>
-          <div class="gift-price">R$ 50,00</div>
-          <button class="btn" onclick="openPixModal('Café da Manhã dos Noivos', '50.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          </div>
+          <h3>Nosso cantinho</h3>
+          <p>Uma contribuição para deixar nosso lar com a nossa cara.</p>
+          <div class="gift-price">R$ 50</div>
+          <button class="btn-mimo" onclick="abrirPix('Nosso cantinho', '50.00')">ESCOLHER MIMO</button>
         </div>
 
+        <!-- 2. Um gesto de amor -->
         <div class="gift-card">
-          <div class="gift-icon">🍕</div>
-          <h4 class="gift-title">Pizza na Primeira DLR de Casados</h4>
-          <div class="gift-price">R$ 80,00</div>
-          <button class="btn" onclick="openPixModal('Pizza na DLR', '80.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <h3>Um gesto de amor</h3>
+          <p>Um carinho para essa nova etapa da nossa vida a dois.</p>
+          <div class="gift-price">R$ 100</div>
+          <button class="btn-mimo" onclick="abrirPix('Um gesto de amor', '100.00')">ESCOLHER MIMO</button>
         </div>
 
+        <!-- 3. Jantar especial -->
         <div class="gift-card">
-          <div class="gift-icon">🛒</div>
-          <h4 class="gift-title">Primeira Compra do Mês</h4>
-          <div class="gift-price">R$ 150,00</div>
-          <button class="btn" onclick="openPixModal('Primeira Compra do Mês', '150.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          </div>
+          <h3>Jantar especial</h3>
+          <p>Uma noite para brindar às pequenas e grandes alegrias.</p>
+          <div class="gift-price">R$ 150</div>
+          <button class="btn-mimo" onclick="abrirPix('Jantar especial', '150.00')">ESCOLHER MIMO</button>
         </div>
 
+        <!-- 4. Sonho de viagem -->
         <div class="gift-card">
-          <div class="gift-icon">🍷</div>
-          <h4 class="gift-title">Jantar Romântico a Dois</h4>
-          <div class="gift-price">R$ 200,00</div>
-          <button class="btn" onclick="openPixModal('Jantar Romântico', '200.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3>Sonho de viagem</h3>
+          <p>Uma ajudinha para colecionarmos novas memórias.</p>
+          <div class="gift-price">R$ 200</div>
+          <button class="btn-mimo" onclick="abrirPix('Sonho de viagem', '200.00')">ESCOLHER MIMO</button>
         </div>
 
+        <!-- 5. Um brinde à união -->
         <div class="gift-card">
-          <div class="gift-icon">🧯</div>
-          <h4 class="gift-title">Extintor para quando a comida queimar</h4>
-          <div class="gift-price">R$ 250,00</div>
-          <button class="btn" onclick="openPixModal('Extintor de Incêndio', '250.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <h3>Um brinde à união</h3>
+          <p>Para celebrar o começo dessa história com muito amor.</p>
+          <div class="gift-price">R$ 250</div>
+          <button class="btn-mimo" onclick="abrirPix('Um brinde à união', '250.00')">ESCOLHER MIMO</button>
         </div>
 
+        <!-- 6. Do seu jeito (Valor Livre) -->
         <div class="gift-card">
-          <div class="gift-icon">✈️</div>
-          <h4 class="gift-title">Ajudinha na Lua de Mel</h4>
-          <div class="gift-price">R$ 500,00</div>
-          <button class="btn" onclick="openPixModal('Ajudinha na Lua de Mel', '500.00')">Presentear</button>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          </div>
+          <h3>Do seu jeito</h3>
+          <p>Se preferir, qualquer valor será recebido com carinho.</p>
+          <div class="gift-price">Valor livre</div>
+          <button class="btn-mimo" onclick="abrirPix('Do seu jeito', 'Valor livre')">ESCOLHER MIMO</button>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- Modal PIX -->
   <div class="modal-overlay" id="pixModal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closePixModal()">&times;</span>
-      <h3 id="modalGiftTitle">Presentear</h3>
-      <p style="margin-top: 10px; color: var(--text-muted);">Agradecemos imensamente pelo seu carinho!</p>
+    <div class="modal-card">
+      <span class="close-btn" onclick="fecharPix()">&times;</span>
+      <h3 id="modalTitulo" style="font-family: var(--font-serif); font-size: 1.8rem;">Mimo</h3>
+      <p style="color: var(--text-muted); margin-top: 5px;">Agradecemos de coração pelo carinho!</p>
 
-      <div class="pix-box">
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">Chave PIX (E-mail / Telefone / CPF):</p>
-        <strong id="pixKeyText">seu-email-ou-pix@exemplo.com</strong>
-      </div>
+      <div class="pix-key-box" id="chavePixTexto">03915621188</div>
 
-      <div class="qrcode-container" id="qrcode"></div>
+      <div class="qrcode-box" id="qrcode"></div>
 
-      <button class="btn" onclick="copyPixKey()" style="margin-top: 10px;">Copiar Chave PIX</button>
+      <button class="btn-mimo" onclick="copiarPix()" style="max-width: 100%; margin-top: 10px;">COPIAR CHAVE PIX</button>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>Priscilla & Igor — 10.12.2026 🤍</p>
-    <p style="font-size: 0.85rem; margin-top: 5px;">Sua presença é o nosso maior presente!</p>
+    Priscilla & Igor — 10.12.2026 🤍
   </footer>
 
   <script>
-    // ALTERE AQUI PARA A SUA CHAVE PIX REAL (Ex: telefone, e-mail, CPF ou Chave Aleatória)
-    const MINHA_CHAVE_PIX = "seu-email-ou-pix@exemplo.com";
+    // CHAVE PIX CONFIGURADA
+    const CHAVE_PIX = "03915621188";
 
-    document.getElementById('pixKeyText').innerText = MINHA_CHAVE_PIX;
+    let qrcodeObj = null;
 
-    let qrcode = null;
-
-    function openPixModal(itemTitle, value) {
-      document.getElementById('modalGiftTitle').innerText = itemTitle;
+    function abrirPix(titulo, valor) {
+      document.getElementById('modalTitulo').innerText = titulo + (valor !== 'Valor livre' ? ' (' + valor + ')' : '');
       document.getElementById('pixModal').style.display = 'flex';
 
-      // Limpa QR Code anterior
       document.getElementById('qrcode').innerHTML = "";
-
-      // Gera QR Code simples com a chave PIX
-      qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: 03915621188,
-        width: 150,
-        height: 150
+      qrcodeObj = new QRCode(document.getElementById("qrcode"), {
+        text: CHAVE_PIX,
+        width: 160,
+        height: 160
       });
     }
 
-    function closePixModal() {
+    function fecharPix() {
       document.getElementById('pixModal').style.display = 'none';
     }
 
-    function copyPixKey() {
-      navigator.clipboard.writeText(MINHA_CHAVE_PIX);
-      alert('Chave PIX copiada com sucesso!');
+    function copiarPix() {
+      navigator.clipboard.writeText(CHAVE_PIX);
+      alert("Chave PIX (" + CHAVE_PIX + ") copiada com sucesso!");
     }
 
-    // Fechar modal clicando fora dele
-    window.onclick = function(event) {
-      const modal = document.getElementById('pixModal');
-      if (event.target == modal) {
-        closePixModal();
+    window.onclick = function(e) {
+      if (e.target == document.getElementById('pixModal')) {
+        fecharPix();
       }
     }
   </script>
