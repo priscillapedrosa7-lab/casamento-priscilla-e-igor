@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casamento de Priscilla & Igor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --primary: #B8860B;
+      --primary-light: #fdfaf3;
+      --accent: #d4af37;
+      --text: #333333;
+      --text-muted: #666666;
+      --bg: #FAFAFA;
+      --white: #FFFFFF;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Hero */
+    header {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    header p.subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Message Section */
+    .intro-section {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: var(--white);
+    }
+
+    .intro-card {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 40px;
+      border: 1px solid #EAEAEA;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      background-color: var(--white);
+    }
+
+    .intro-card p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .heart-icon {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 15px 0;
+    }
+
+    /* Info Section (Data, Local, RSVP) */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 50px 0;
+    }
+
+    .info-card {
+      background: var(--primary-light);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(184, 134, 11, 0.2);
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .badge-rsvp {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: var(--primary);
+      color: white;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Gifts Section */
+    .gifts-section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    .gifts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .gift-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .gift-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .gift-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .gift-price {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: #966d09;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .pix-box {
+      background: var(--primary-light);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      word-break: break-all;
+      border: 1px dashed var(--primary);
+    }
+
+    .qrcode-container {
+      display: flex;
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--white);
+      color: var(--text-muted);
+      border-top: 1px solid #EAEAEA;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      .intro-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Priscilla & Igor</h1>
+    <p class="subtitle">Nosso Casamento Civil</p>
+  </header>
+
+  <!-- Mensagem dos Noivos -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-card">
+        <p>Com muita alegria, queremos convidar você para compartilhar conosco um dos momentos mais especiais das nossas vidas: a celebração do nosso casamento civil. 🤍</p>
+        <p>Escolhemos comemorar esse dia de maneira simples, íntima e cheia de amor, ao lado de pessoas que fazem parte da nossa história. Ter você conosco tornará esse momento ainda mais especial!</p>
+        <div class="heart-icon">✨</div>
+        <p>Com amor e carinho,<br><strong>Priscilla & Igor</strong></p>
+      </div>
+
+      <!-- Informações do Evento -->
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>📍 Local</h3>
+          <p><strong>Restaurante Manati</strong></p>
+          <p>QS 01, Rua 210, Lote 08<br>Águas Claras</p>
+        </div>
+        <div class="info-card">
+          <h3>📅 Data & Horário</h3>
+          <p><strong>10 de Dezembro de 2026</strong></p>
+          <p>Horário: 19h</p>
+        </div>
+        <div class="info-card">
+          <h3>✉️ Confirmação</h3>
+          <p>Convite individual.</p>
+          <p>Por favor, confirme sua presença até:</p>
+          <span class="badge-rsvp">26/10/2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de Presentes Fictícios -->
+  <section class="gifts-section">
+    <div class="container">
+      <h2 class="section-title">Lista de Presentes</h2>
+      <p class="section-subtitle">Se você desejar nos presentear, preparamos uma forma carinhosa e bem-humorada de contribuir com a nossa nova etapa a dois!</p>
+
+      <div class="gifts-grid">
+        
+        <div class="gift-card">
+          <div class="gift-icon">☕</div>
+          <h4 class="gift-title">Café da Manhã dos Noivos</h4>
+          <div class="gift-price">R$ 50,00</div>
+          <button class="btn" onclick="openPixModal('Café da Manhã dos Noivos', '50.00')">Presentear</button>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-icon">🍕</div>
+          <h4 class="gift-title">Pizza na Primeira DLR de Casados</h4>
+          <div class="gift-price">R$ 80,00</div>
+          <button class="btn" onclick="openPixModal('Pizza na DLR', '80.00')">Presentear</button>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-icon">🛒</div>
+          <h4 class="gift-title">Primeira Compra do Mês</h4>
+          <div class="gift-price">R$ 150,00</div>
+          <button class="btn" onclick="openPixModal('Primeira Compra do Mês', '150.00')">Presentear</button>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-icon">🍷</div>
+          <h4 class="gift-title">Jantar Romântico a Dois</h4>
+          <div class="gift-price">R$ 200,00</div>
+          <button class="btn" onclick="openPixModal('Jantar Romântico', '200.00')">Presentear</button>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-icon">🧯</div>
+          <h4 class="gift-title">Extintor para quando a comida queimar</h4>
+          <div class="gift-price">R$ 250,00</div>
+          <button class="btn" onclick="openPixModal('Extintor de Incêndio', '250.00')">Presentear</button>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-icon">✈️</div>
+          <h4 class="gift-title">Ajudinha na Lua de Mel</h4>
+          <div class="gift-price">R$ 500,00</div>
+          <button class="btn" onclick="openPixModal('Ajudinha na Lua de Mel', '500.00')">Presentear</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal PIX -->
+  <div class="modal-overlay" id="pixModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closePixModal()">&times;</span>
+      <h3 id="modalGiftTitle">Presentear</h3>
+      <p style="margin-top: 10px; color: var(--text-muted);">Agradecemos imensamente pelo seu carinho!</p>
+
+      <div class="pix-box">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px;">Chave PIX (E-mail / Telefone / CPF):</p>
+        <strong id="pixKeyText">seu-email-ou-pix@exemplo.com</strong>
+      </div>
+
+      <div class="qrcode-container" id="qrcode"></div>
+
+      <button class="btn" onclick="copyPixKey()" style="margin-top: 10px;">Copiar Chave PIX</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Priscilla & Igor — 10.12.2026 🤍</p>
+    <p style="font-size: 0.85rem; margin-top: 5px;">Sua presença é o nosso maior presente!</p>
+  </footer>
+
+  <script>
+    // ALTERE AQUI PARA A SUA CHAVE PIX REAL (Ex: telefone, e-mail, CPF ou Chave Aleatória)
+    const MINHA_CHAVE_PIX = "seu-email-ou-pix@exemplo.com";
+
+    document.getElementById('pixKeyText').innerText = MINHA_CHAVE_PIX;
+
+    let qrcode = null;
+
+    function openPixModal(itemTitle, value) {
+      document.getElementById('modalGiftTitle').innerText = itemTitle;
+      document.getElementById('pixModal').style.display = 'flex';
+
+      // Limpa QR Code anterior
+      document.getElementById('qrcode').innerHTML = "";
+
+      // Gera QR Code simples com a chave PIX
+      qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: 03915621188,
+        width: 150,
+        height: 150
+      });
+    }
+
+    function closePixModal() {
+      document.getElementById('pixModal').style.display = 'none';
+    }
+
+    function copyPixKey() {
+      navigator.clipboard.writeText(MINHA_CHAVE_PIX);
+      alert('Chave PIX copiada com sucesso!');
+    }
+
+    // Fechar modal clicando fora dele
+    window.onclick = function(event) {
+      const modal = document.getElementById('pixModal');
+      if (event.target == modal) {
+        closePixModal();
+      }
+    }
+  </script>
+</body>
+</html>
